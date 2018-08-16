@@ -15,7 +15,7 @@ int main()
 
 	int player[20];
 	int computer[4];
-	int result[4];
+	int result[4] = { 0 , 0 , 0 , 0 };
 
 	int random;
 
@@ -98,7 +98,8 @@ int main()
 			}
 		}
 		cout << endl;
-		cout << computer[i];
+		cout << computer[i] << endl;
+
 	}
 
 
@@ -134,11 +135,12 @@ int main()
 			cout << "더미에서 나온 카드" << player[x] << endl;
 		}
 
-		cout << "현재 카드";
+		cout << "현재 카드" << " ";
 		for (int i = 0; i < x; i++)
 		{
 			cout << player[i] << " ";
 		}
+		cout << endl;
 
 		cout << "추측할 위치와 카드숫자" << endl;
 
@@ -148,7 +150,7 @@ int main()
 		if (computer[locate] == value)
 			result[locate] = value;
 
-		for (int i = 0; i < x; i++)
+		for (int i = 0; i < 4; i++)
 		{
 			cout << result[i] << endl;
 		}
