@@ -18,7 +18,7 @@ int main()
 
 	for (int i = 0; i < 4; i++)
 		{
-		a = (rand() % 25);
+		a = (rand() % 24);
 
 		p1[i] = card[a];
 
@@ -27,7 +27,7 @@ int main()
 			if (p1[i] == 0)
 			{
 
-			a = (rand() % 25);
+			a = (rand() % 24);
 
 			p1[i] = card[a];
 
@@ -50,7 +50,7 @@ int main()
 	for (int i = 0; i < 4; i++)
 	{
 
-		a = (rand() % 25);
+		a = (rand() % 24);
 
 		p2[i] = card[a];
 
@@ -60,7 +60,7 @@ int main()
 			if (p2[i] == 0)
 			{
 
-				a = (rand() % 25);
+				a = (rand() % 24);
 				p2[i] = card[a];
 
 			}
