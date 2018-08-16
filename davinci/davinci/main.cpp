@@ -11,8 +11,8 @@ int main()
 	// 1. 24장의 카드중 무작위 4장을 플레이어들이 받는다.
 	int card[24] = {10 , 11 , 20 , 21 , 30 , 31 , 40 , 41 , 50 , 51 , 60 , 61 , 70 , 71 , 80 , 81 , 90 , 91 , 100 , 101 , 110 , 111 , 120 , 121};
 
-	int p1[12];
-	int p2[12];
+	int player[12];
+	int computer[12];
 
 	int a;
 
@@ -20,16 +20,16 @@ int main()
 		{
 		a = (rand() % 24);
 
-		p1[i] = card[a];
+		player[i] = card[a];
 
 		while (1)
 		{
-			if (p1[i] == 0)
+			if (player[i] == 0)
 			{
 
 			a = (rand() % 24);
 
-			p1[i] = card[a];
+			player[i] = card[a];
 
 			}
 			else	break;
@@ -42,7 +42,7 @@ int main()
 	for (int i = 0; i < 4; i++)
 	{
 
-		cout << p1[i] << endl;
+		cout << player[i] << endl;
 
 	}
 
@@ -52,20 +52,20 @@ int main()
 
 		a = (rand() % 24);
 
-		p2[i] = card[a];
+		computer[i] = card[a];
 
 		while (1)
 		{
 
-			if (p2[i] == 0)
+			if (computer[i] == 0)
 			{
 
 				a = (rand() % 24);
-				p2[i] = card[a];
+				computer[i] = card[a];
 
 			}
 
-			else if (p2[i] != 0)
+			else if (computer[i] != 0)
 			break;
 		}
 
@@ -76,7 +76,7 @@ int main()
 	for (int i = 0; i < 4; i++)
 	{
 
-		cout << p2[i] << endl;
+		cout << computer[i] << endl;
 
 	}
 
@@ -87,15 +87,15 @@ int main()
 	{
 		for (int j = i + 1; j < 4; j++)
 		{
-			if (p1[i] > p1[j])
+			if (player[i] > player[j])
 			{
-				b = p1[i];
-				p1[i] = p1[j];
-				p1[j] = b;
+				b = player[i];
+				player[i] = player[j];
+				player[j] = b;
 			}
 		}
 		cout << endl;
-		cout << p1[i];
+		cout << player[i];
 	}
 
 
