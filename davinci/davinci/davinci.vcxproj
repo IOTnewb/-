@@ -139,7 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="calculate.cpp" />
+    <ClCompile Include="confirm.cpp" />
+    <ClCompile Include="drawcard.cpp" />
+    <ClCompile Include="guess.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="print.cpp" />
+    <ClCompile Include="sort.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
