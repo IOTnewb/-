@@ -5,6 +5,97 @@
 
 using namespace std;
 
+void Drawcard(int* array , int* card)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		int random = (rand() % 24);
+
+		array[i] = card[random];
+
+		while (1)
+		{
+			if (array[i] == 0)
+			{
+
+				random = (rand() % 24);
+
+				array[i] = card[random];
+
+			}
+			else	break;
+		}
+		card[random] = 0;
+	}
+}
+
+void Printcard(int* array)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		cout << array[i] << " ";
+	}
+
+		cout << endl;
+}
+
+
+void SortArray(int* computer)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = i + 1; j < 4; j++)
+		{
+			if (computer[i] > computer[j])
+			{
+				int b = computer[i];
+				computer[i] = computer[j];
+				computer[j] = b;
+			}
+		}
+
+		cout << computer[i] << " ";
+
+	}
+		cout << endl;
+
+}
+
+void Drawdummy(int* player , int* card , int x)
+{
+	for (int i = x; i < x + 1; i++)
+	{
+		int random = (rand() % 24);
+
+		player[i] = card[random];
+
+		while (1)
+		{
+			if (player[i] == 0)
+			{
+				random = (rand() % 24);
+				player[i] = card[random];
+			}
+			else break;
+		}
+		card[random] = 0;
+	}
+
+	cout << endl;
+}
+
+void PrintColor(int* computer , int* result)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (computer[i] % 2 == 0) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
+		cout << result[i] << " ";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	}
+
+}
+
+
 int main()
 {
 	srand((int)time(NULL));
@@ -16,139 +107,37 @@ int main()
 	int player[20];
 	int computer[4];
 	int result[4] = { 0 , 0 , 0 , 0 };
-
-	int random;
+	
 	int turn = 0;
 
-	for (int i = 0; i < 4; i++)
-	{
-		random = (rand() % 24);
+	Drawcard(player, card);
+	Drawcard(computer, card);
 
-		player[i] = card[random];
-
-		while (1)
-		{
-			if (player[i] == 0)
-			{
-
-				random = (rand() % 24);
-
-				player[i] = card[random];
-
-			}
-			else	break;
-		}
-
-		card[random] = 0;
-
-	}
-
-	for (int i = 0; i < 4; i++)
-	{
-
-		cout << player[i] << " ";
-
-	}
-	cout << endl;
-
-	for (int i = 0; i < 4; i++)
-	{
-
-		random = (rand() % 24);
-
-		computer[i] = card[random];
-
-		while (1)
-		{
-
-			if (computer[i] == 0)
-			{
-
-				random = (rand() % 24);
-				computer[i] = card[random];
-
-			}
-
-			else if (computer[i] != 0)
-				break;
-		}
-
-		card[random] = 0;
-
-	}
-
-	for (int i = 0; i < 4; i++)
-	{
-
-		cout << computer[i] << " ";
-
-	}
-	cout << endl;
+	Printcard(player);
+	Printcard(computer);
+		
 
 	// 2. 플레이어들은 받은 4장의 카드를 룰에 맞게 정렬한다.
-	int b = 0;
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = i + 1; j < 4; j++)
-		{
-			if (computer[i] > computer[j])
-			{
-				b = computer[i];
-				computer[i] = computer[j];
-				computer[j] = b;
-			}
-		}
-
-		cout << computer[i] << " ";
-
-	}
-	cout << endl;
-
+	
+	SortArray(computer);
+	
 	// 3. 남은 카드 더미에서 한장을 뽑고, 재정렬 후 상대방의 카드를 추측한다.
 
 	int locate = 0;
 	int value = 0;
-
 	int x = 4;
 
 	while (1)
 	{
-		for (int i = x; i < x + 1; i++)
-		{
-			random = (rand() % 24);
-
-			player[i] = card[random];
-
-			while (1)
-			{
-				if (player[i] == 0)
-				{
-
-					random = (rand() % 24);
-
-					player[i] = card[random];
-
-				}
-				else	break;
-			}
-			card[random] = 0;
-
-		for (int i = 0; i < 4; i++)
-			{
-			if (computer[i] % 2 == 0) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
-				cout << result[i] << " ";
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-			}
-			cout << endl;
-			cout << "더미에서 나온 카드 : " << player[x] << endl;
-		}
-
-		cout << "현재 카드 : " << " ";
-		for (int i = 0; i < x; i++)
-		{
-			cout << player[i] << " ";
-		}
+		Drawdummy(player, card, x);
+		
+		PrintColor(computer, result);
+		
 		cout << endl;
+		cout << "더미에서 나온 카드 : " << player[x] << endl;
+		cout << "현재 카드 : " << " ";
+
+		Printcard(player);
 
 		cout << "추측할 위치와 카드숫자" << endl;
 
