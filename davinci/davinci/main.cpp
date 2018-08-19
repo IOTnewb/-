@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void Drawcard(int* array , int* card)
+void Drawcard(int* array, int* card)
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -29,14 +29,14 @@ void Drawcard(int* array , int* card)
 	}
 }
 
-void Printcard(int* array)
+void Printcard(int* array,int*x)
 {
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < *x; i++)
 	{
 		cout << array[i] << " ";
 	}
 
-		cout << endl;
+	cout << endl;
 }
 
 
@@ -57,11 +57,11 @@ void SortArray(int* computer)
 		cout << computer[i] << " ";
 
 	}
-		cout << endl;
+	cout << endl;
 
 }
 
-void Drawdummy(int* player , int* card , int x)
+void Drawdummy(int* player, int* card, int x)
 {
 	for (int i = x; i < x + 1; i++)
 	{
@@ -84,7 +84,7 @@ void Drawdummy(int* player , int* card , int x)
 	cout << endl;
 }
 
-void PrintColor(int* computer , int* result)
+void PrintColor(int* computer, int* result)
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -95,6 +95,48 @@ void PrintColor(int* computer , int* result)
 
 }
 
+void GetGuess(int* locate, int* value)
+{
+	cin >> *locate;
+	while (1)
+	{
+		if (*locate > 3) {
+			cout << "위치을 다시  입력하시오" << endl;
+			cin >> *locate;
+		}
+		if (*locate < 4) break;
+	}
+	cin >> *value;
+	while (1)
+	{
+		if (*value != 10 && *value != 11 && *value != 20 && *value != 21 && *value != 30 && *value != 31 && *value != 40 && *value != 41 && *value != 50 && *value != 51 && *value != 60 && *value != 61 && *value != 70 && *value != 71 && *value != 80 && *value != 81 && *value != 90 && *value != 91 && *value != 100 && *value != 101 && *value != 110 && *value != 111 && *value != 120 && *value != 121) {
+			cout << "값을 다시  입력하시오" << endl;
+			cin >> *value;
+		}
+		if (*value == 10 || *value == 11 || *value == 20 || *value == 21 || *value == 30 || *value == 31 || *value == 40 || *value == 41 || *value == 50 || *value == 51 || *value == 60 || *value == 61 || *value == 70 || *value == 71 || *value == 80 || *value == 81 || *value == 90 || *value == 91 || *value == 100 || *value == 101 || *value == 110 || *value == 111 || *value == 120 || *value == 121)
+			break;
+	}
+}
+
+void ConfirmAnswer(int* computer,int* result,int* locate, int* value, int* score)
+{
+	if (computer[*locate] == *value)	result[*locate] = *value;
+	else score = score - 10;
+}
+
+void ConfirmResult(int* computer, int* result,int* b)
+{
+	if ((computer[0] == result[0]) && (computer[1] == result[1]) && (computer[2] == result[2]) && (computer[3] == result[3]))
+	{
+		cout << "끝" << endl;
+		*b = 1;
+	}
+}
+
+void CalculateScore(int* score, int* turn)
+{
+	*score = *score - *turn * 10;
+}
 
 int main()
 {
@@ -107,73 +149,54 @@ int main()
 	int player[20];
 	int computer[4];
 	int result[4] = { 0 , 0 , 0 , 0 };
-	
-	int turn = 0;
 
+	int turn = 0;
+	int x = 4;
+	int b = 0;
 	Drawcard(player, card);
 	Drawcard(computer, card);
 
-	Printcard(player);
-	Printcard(computer);
-		
+	Printcard(player,&x);
+	Printcard(computer,&x);
+
 
 	// 2. 플레이어들은 받은 4장의 카드를 룰에 맞게 정렬한다.
-	
+
 	SortArray(computer);
-	
+
 	// 3. 남은 카드 더미에서 한장을 뽑고, 재정렬 후 상대방의 카드를 추측한다.
 
 	int locate = 0;
 	int value = 0;
-	int x = 4;
 
 	while (1)
 	{
 		Drawdummy(player, card, x);
-		
+
 		PrintColor(computer, result);
-		
+
 		cout << endl;
 		cout << "더미에서 나온 카드 : " << player[x] << endl;
 		cout << "현재 카드 : " << " ";
 
-		Printcard(player);
+		Printcard(player,&x);
 
 		cout << "추측할 위치와 카드숫자" << endl;
 
-		cin >> locate;
-		while (1)
-		{
-			if (locate > 3) {
-				cout << "위치을 다시  입력하시오" << endl;
-				cin >> locate;
-			}
-			if (locate < 4) break;
-		}
-		cin >> value;
-		while (1)
-		{
-			if (value != 10 && value != 11 && value != 20 && value != 21 && value != 30 && value != 31 && value != 40 && value != 41 && value != 50 && value != 51 && value != 60 && value != 61 && value != 70 && value != 71 && value != 80 && value != 81 && value != 90 && value != 91 && value != 100 && value != 101 && value != 110 && value != 111 && value != 120 && value != 121) {
-				cout << "값을 다시  입력하시오" << endl;
-				cin >> value;
-			}
-			if (value == 10 || value == 11 || value == 20 || value == 21 || value == 30 || value == 31 || value == 40 || value == 41 || value == 50 || value == 51 || value == 60 || value == 61 || value == 70 || value == 71 || value == 80 || value == 81 || value == 90 || value == 91 || value == 100 || value == 101 || value == 110 || value == 111 || value == 120 || value == 121)
-				break;
-		}
+		GetGuess(&locate, &value);
 
-		if (computer[locate] == value)	result[locate] = value;
-		else score = score - 10;
+		ConfirmAnswer(computer,result,&locate, &value, &score);
+
 		x++;
 		turn++;
 		// 4. 컴퓨터의 카드배열이 다 공개되면 턴수를 공개하고 게임 끝
 
-		if ((computer[0] == result[0]) && (computer[1] == result[1]) && (computer[2] == result[2]) && (computer[3] == result[3]))
-		{
-			cout << "끝" << endl;
-			break;
-		}
+		ConfirmResult(computer, result, &b);
+		if (b == 1) break;
 	}
-	score = score - turn * 10;
+
+	CalculateScore(&score, &turn);
+	
 	cout << "점수 : " << score;
 
 	return 0;
