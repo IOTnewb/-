@@ -1,20 +1,20 @@
 #include "main.h"
 
-void SortArray(int* computer)
+void SortArray(Computer* computer)
 {
 	for (int i = 0; i < 4; i++)
 	{
 		for (int j = i + 1; j < 4; j++)
 		{
-			if (computer[i] > computer[j])
+			if (computer->computer[i] > computer->computer[j])
 			{
-				int b = computer[i];
-				computer[i] = computer[j];
-				computer[j] = b;
+				int b = computer->computer[i];
+				computer->computer[i] = computer->computer[j];
+				computer->computer[j] = b;
 			}
 		}
 
-		cout << computer[i] << " ";
+		cout << computer->computer[i] << " ";
 
 	}
 	cout << endl;

@@ -1,21 +1,31 @@
 #include "main.h"
 
-void Printcard(int* array, int*x)
+void Printcard(Player* player)
 {
-	for (int i = 0; i < *x; i++)
+	for (int i = 0; i < player->x; i++)
 	{
-		cout << array[i] << " ";
+		cout << player->player[i] << " ";
 	}
 
 	cout << endl;
 }
 
 
-void PrintColor(int* computer, int* result)
+void Printcardcom(Computer* computer)
+{
+	for (int i = 0; i < computer->x; i++)
+	{
+		cout << computer->computer[i] << " ";
+	}
+
+	cout << endl;
+}
+
+void PrintColor(Computer* computer, int* result)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (computer[i] % 2 == 0) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
+		if (computer->computer[i] % 2 == 0) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
 		cout << result[i] << " ";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 	}

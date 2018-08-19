@@ -1,21 +1,21 @@
 #include "main.h"
 
-void Drawcard(int* array, int* card)
+void Drawcard(Player* player , int* card)
 {
 	for (int i = 0; i < 4; i++)
 	{
 		int random = (rand() % 24);
 
-		array[i] = card[random];
+		player->player[i] = card[random];
 
 		while (1)
 		{
-			if (array[i] == 0)
+			if (player->player[i] == 0)
 			{
 
 				random = (rand() % 24);
 
-				array[i] = card[random];
+				player->player[i] = card[random];
 
 			}
 			else	break;
@@ -24,22 +24,44 @@ void Drawcard(int* array, int* card)
 	}
 }
 
-
-
-void Drawdummy(int* player, int* card, int x)
+void Drawcardcom(Computer* computer , int* card)
 {
-	for (int i = x; i < x + 1; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		int random = (rand() % 24);
 
-		player[i] = card[random];
+		computer->computer[i] = card[random];
 
 		while (1)
 		{
-			if (player[i] == 0)
+			if (computer->computer[i] == 0)
+			{
+
+				random = (rand() % 24);
+
+				computer->computer[i] = card[random];
+
+			}
+			else	break;
+		}
+		card[random] = 0;
+	}
+}
+
+void Drawdummy(Player* player , int* card)
+{
+	for (int i = player->x; i < player->x + 1; i++)
+	{
+		int random = (rand() % 24);
+
+		player->player[i] = card[random];
+
+		while (1)
+		{
+			if (player->player[i] == 0)
 			{
 				random = (rand() % 24);
-				player[i] = card[random];
+				player->player[i] = card[random];
 			}
 			else break;
 		}
