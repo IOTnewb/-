@@ -1,21 +1,21 @@
 #include "main.h"
 
-void Drawcard(Player* player , int* card)
+void Player::Drawcard(int* card)
 {
 	for (int i = 0; i < 4; i++)
 	{
 		int random = (rand() % 24);
 
-		player->player[i] = card[random];
+		player[i] = card[random];
 
 		while (1)
 		{
-			if (player->player[i] == 0)
+			if (player[i] == 0)
 			{
 
 				random = (rand() % 24);
 
-				player->player[i] = card[random];
+				player[i] = card[random];
 
 			}
 			else	break;
@@ -24,22 +24,22 @@ void Drawcard(Player* player , int* card)
 	}
 }
 
-void Drawcardcom(Computer* computer , int* card)
+void Computer::Drawcardcom(int* card)
 {
 	for (int i = 0; i < 4; i++)
 	{
 		int random = (rand() % 24);
 
-		computer->computer[i] = card[random];
+		computer[i] = card[random];
 
 		while (1)
 		{
-			if (computer->computer[i] == 0)
+			if (computer[i] == 0)
 			{
 
 				random = (rand() % 24);
 
-				computer->computer[i] = card[random];
+				computer[i] = card[random];
 
 			}
 			else	break;

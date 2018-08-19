@@ -4,7 +4,7 @@
 void ConfirmAnswer(Computer* computer, int* result, Guess* guess, int* score)
 {
 	if (computer->computer[guess->locate] == guess->value)	result[guess->locate] = guess->value;
-	else score = score - 10;
+	else *score = *score - 10;
 }
 
 void ConfirmResult(Computer* computer, int* result, int* b)

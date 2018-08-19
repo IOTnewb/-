@@ -9,18 +9,18 @@ int main()
 	// 1. 24장의 카드중 무작위 4장을 플레이어들이 받는다.
 	Player player;
 	
-	Drawcard(&player , card);
-	Printcard(&player);
+	player.Drawcard(card);
+	player.Printcard();
 
 	Computer computer;
 	
-	Drawcardcom(&computer , card);
-	Printcardcom(&computer);
+	computer.Drawcardcom(card);
+	computer.Printcardcom();
 
 
 	// 2. 플레이어들은 받은 4장의 카드를 룰에 맞게 정렬한다.
 
-	SortArray(&computer);
+	computer.SortArray();
 
 	// 3. 남은 카드 더미에서 한장을 뽑고, 재정렬 후 상대방의 카드를 추측한다.
 
@@ -29,7 +29,6 @@ int main()
 	int result[4] = { 0 , 0 , 0 , 0 };
 	int turn = 0;
 	int score = 1040;
-
 	int b;
 
 	while (1)
@@ -41,13 +40,13 @@ int main()
 		cout << "더미에서 나온 카드 : " << player.player[player.x] << endl;
 		cout << "현재 카드 : " << " ";
 
-		Printcard(&player);
+		player.Printcard();
 
 		cout << "추측할 위치와 카드숫자" << endl;
 
 		GetGuess(&guess);
 
-		ConfirmAnswer(&computer,result, &guess , &score);
+		ConfirmAnswer(&computer, result , &guess , &score);
 
 		player.x++;
 		turn++;

@@ -1,21 +1,21 @@
 #include "main.h"
 
-void Printcard(Player* player)
+void Player::Printcard()
 {
-	for (int i = 0; i < player->x; i++)
+	for (int i = 0; i < x; i++)
 	{
-		cout << player->player[i] << " ";
+		cout << player[i] << " ";
 	}
 
 	cout << endl;
 }
 
 
-void Printcardcom(Computer* computer)
+void Computer::Printcardcom()
 {
-	for (int i = 0; i < computer->x; i++)
+	for (int i = 0; i < x; i++)
 	{
-		cout << computer->computer[i] << " ";
+		cout << computer[i] << " ";
 	}
 
 	cout << endl;
