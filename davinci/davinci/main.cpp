@@ -132,6 +132,7 @@ int main()
 				else	break;
 			}
 			card[random] = 0;
+
 		for (int i = 0; i < 4; i++)
 			{
 			if (computer[i] % 2 == 0) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
