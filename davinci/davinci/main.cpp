@@ -10,7 +10,10 @@ int main()
 	srand((int)time(NULL));
 
 	// 1. 24장의 카드중 무작위 4장을 플레이어들이 받는다.
-	int card[24] = { 10 , 11 , 20 , 21 , 30 , 31 , 40 , 41 , 50 , 51 , 60 , 61 , 70 , 71 , 80 , 81 , 90 , 91 , 100 , 101 , 110 , 111 , 120 , 121 };
+	int card[24] = { 10 , 11 , 20 , 21 , 30 , 31 , 
+							40 , 41 , 50 , 51 , 60 , 61 , 
+							70 , 71 , 80 , 81 , 90 , 91 , 
+							100 , 101 , 110 , 111 , 120 , 121 };
 
 	int score = 1040;
 	int player[20];
@@ -20,7 +23,7 @@ int main()
 	int random;
 	int turn = 0;
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++)			// 플레이어 랜덤으로 카드 4장
 	{
 		random = (rand() % 24);
 
@@ -53,41 +56,30 @@ int main()
 
 	for (int i = 0; i < 4; i++)
 	{
-
 		random = (rand() % 24);
-
 		computer[i] = card[random];
-
 		while (1)
 		{
-
 			if (computer[i] == 0)
 			{
-
 				random = (rand() % 24);
 				computer[i] = card[random];
-
 			}
-
 			else if (computer[i] != 0)
 				break;
 		}
-
 		card[random] = 0;
-
 	}
 
 	for (int i = 0; i < 4; i++)
 	{
-
 		cout << computer[i] << " ";
-
 	}
 	cout << endl;
 
 	// 2. 플레이어들은 받은 4장의 카드를 룰에 맞게 정렬한다.
 	int b = 0;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++) // 컴퓨터 카드 정렬
 	{
 		for (int j = i + 1; j < 4; j++)
 		{
@@ -98,42 +90,32 @@ int main()
 				computer[j] = b;
 			}
 		}
-
 		cout << computer[i] << " ";
-
 	}
 	cout << endl;
 
 	// 3. 남은 카드 더미에서 한장을 뽑고, 재정렬 후 상대방의 카드를 추측한다.
-
 	int locate = 0;
 	int value = 0;
-
 	int x = 4;
-
 	while (1)
 	{
 		for (int i = x; i < x + 1; i++)
 		{
 			random = (rand() % 24);
-
 			player[i] = card[random];
-
 			while (1)
 			{
 				if (player[i] == 0)
 				{
-
 					random = (rand() % 24);
-
 					player[i] = card[random];
-
 				}
 				else	break;
 			}
 			card[random] = 0;
 
-		for (int i = 0; i < 4; i++)
+			for (int i = 0; i < 4; i++)
 			{
 			if (computer[i] % 2 == 0) SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 3);
 				cout << result[i] << " ";
@@ -156,7 +138,7 @@ int main()
 		while (1)
 		{
 			if (locate > 3) {
-				cout << "위치을 다시  입력하시오" << endl;
+				cout << "위치를 다시  입력하시오" << endl;
 				cin >> locate;
 			}
 			if (locate < 4) break;
