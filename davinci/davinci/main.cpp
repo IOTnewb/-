@@ -15,10 +15,10 @@ int main()
 							100 , 101 , 110 , 111 , 120 , 121 };
 
 	// 1. 24장의 카드중 무작위 4장을 플레이어들이 받는다.
-	Player player;
+	Player *player = new Player();
 	
-	player.Drawcard(card);
-	player.Printcard();
+	player->Drawcard(card);
+	player->Printcard();
 
 	Computer computer;
 	
@@ -41,14 +41,14 @@ int main()
 
 	while (1)
 	{
-		player.Drawdummy(card);
+		player->Drawdummy(card);
 		PrintColor(&computer, result);
 
 		cout << endl;
-		cout << "더미에서 나온 카드 : " << player.Getplayer()[player.Getcount()] << endl;
+		cout << "더미에서 나온 카드 : " << player->Getplayer()[player->Getcount()] << endl;
 		cout << "현재 카드 : " << " ";
 
-		player.Printcard();
+		player->Printcard();
 
 		cout << "추측할 위치와 카드숫자" << endl;
 
@@ -56,7 +56,7 @@ int main()
 
 		ConfirmAnswer(&computer, result , &guess , &score);
 
-		player.Addcount();
+		player->Addcount();
 		turn++;
 		// 4. 컴퓨터의 카드배열이 다 공개되면 턴수를 공개하고 게임 끝
 

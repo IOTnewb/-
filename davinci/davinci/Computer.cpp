@@ -10,7 +10,7 @@ void ConfirmResult(Computer* computer, int* result, int* b)
 {
 	if ((computer->computer[0] == result[0]) && (computer->computer[1] == result[1]) && (computer->computer[2] == result[2]) && (computer->computer[3] == result[3]))
 	{
-		cout << "끝" << endl;
+		cout << " 게임 종료 " << endl;
 		*b = 1;
 	}
 }
