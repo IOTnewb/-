@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 void Player::Drawcard(int* card)
 {
 	for (int i = 0; i < 4; i++)
@@ -24,31 +25,7 @@ void Player::Drawcard(int* card)
 	}
 }
 
-void Computer::Drawcardcom(int* card)
-{
-	for (int i = 0; i < 4; i++)
-	{
-		int random = (rand() % 24);
-
-		computer[i] = card[random];
-
-		while (1)
-		{
-			if (computer[i] == 0)
-			{
-
-				random = (rand() % 24);
-
-				computer[i] = card[random];
-
-			}
-			else	break;
-		}
-		card[random] = 0;
-	}
-}
-
-void Drawdummy(Player* player , int* card)
+void Drawdummy(Player* player, int* card)
 {
 	for (int i = player->x; i < player->x + 1; i++)
 	{
@@ -66,6 +43,16 @@ void Drawdummy(Player* player , int* card)
 			else break;
 		}
 		card[random] = 0;
+	}
+
+	cout << endl;
+}
+
+void Player::Printcard()
+{
+	for (int i = 0; i < x; i++)
+	{
+		cout << player[i] << " ";
 	}
 
 	cout << endl;
