@@ -63,7 +63,7 @@ void Computer::SortArray()
 
 void Computer::Printcardcom()
 {
-	for (int i = 0; i < x; i++)
+	for (int i = 0; i < count; i++)
 	{
 		cout << computer[i] << " ";
 	}

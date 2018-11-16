@@ -2,7 +2,7 @@
 
 struct Computer
 {
-	int x = 4;
+	int count = 4;
 	int computer[4];
 	void Drawcardcom(int* card);
 	void Printcardcom();

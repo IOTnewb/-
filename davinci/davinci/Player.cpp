@@ -22,23 +22,24 @@ void Player::Drawcard(int* card)
 			else	break;
 		}
 		card[random] = 0;
+		count++;
 	}
 }
 
-void Drawdummy(Player* player, int* card)
+void Player::Drawdummy(int* card)
 {
-	for (int i = player->x; i < player->x + 1; i++)
+	for (int i = count; i < count + 1; i++)
 	{
 		int random = (rand() % 24);
 
-		player->player[i] = card[random];
+		player[i] = card[random];
 
 		while (1)
 		{
-			if (player->player[i] == 0)
+			if (player[i] == 0)
 			{
 				random = (rand() % 24);
-				player->player[i] = card[random];
+				player[i] = card[random];
 			}
 			else break;
 		}
@@ -50,7 +51,7 @@ void Drawdummy(Player* player, int* card)
 
 void Player::Printcard()
 {
-	for (int i = 0; i < x; i++)
+	for (int i = 0; i < count; i++)
 	{
 		cout << player[i] << " ";
 	}

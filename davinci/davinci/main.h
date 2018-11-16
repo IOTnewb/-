@@ -12,6 +12,6 @@ using namespace std;
 void CalculateScore(int* score, int* turn);
 void ConfirmAnswer(Computer* computer, int* result, Guess* guess, int* score);
 void ConfirmResult(Computer* computer, int* result, int* b);
-void Drawdummy(Player* player , int* card);
+
 void GetGuess(Guess* guess);
 void PrintColor(Computer* computer, int* result);
